@@ -8,11 +8,11 @@ import { Users } from "../users";
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
-  users: Users[];
+  users: object;
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
-    this.dataService.getUsers().subscribe(
+    this.dataService.fetchUsers().subscribe(
       results => (this.users = results),
       error => console.error("Something ainr right!", error)
     );

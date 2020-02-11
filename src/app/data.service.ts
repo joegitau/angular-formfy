@@ -10,10 +10,14 @@ import { Users } from "./users";
 export class DataService {
   constructor(private http: HttpClient) {}
 
-  public url = "https://jsonplaceholder.typicode.com/users";
+  public url = "https://reqres.in/api/users";
 
-  getUsers(): Observable<Users[]> {
-    return this.http.get<Users[]>(this.url).pipe(catchError(this.handleErrors));
+  // getUsers(): Observable<Users[]> {
+  //   return this.http.get<Users[]>(this.url).pipe(catchError(this.handleErrors));
+  // }
+
+  fetchUsers() {
+    return this.http.get(this.url);
   }
 
   handleErrors(error: HttpErrorResponse) {
