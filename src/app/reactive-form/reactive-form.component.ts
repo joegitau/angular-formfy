@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
-import { Customer } from "../customer";
+import { ratingRange } from '../utils/rating-validator';
 
 @Component({
   selector: "app-reactive-form",
@@ -10,7 +10,6 @@ import { Customer } from "../customer";
 })
 export class ReactiveFormComponent implements OnInit {
   customerForm: FormGroup;
-  // customer = new Customer();
 
   constructor(private fb: FormBuilder) {}
 
@@ -18,9 +17,14 @@ export class ReactiveFormComponent implements OnInit {
     this.customerForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(3)]],
       lastName: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.email, Validators.required]],
+      emailGroup: this.fb.group({
+        email: ['', [Validators.email, Validators.required]],
+        confirmEmail: ['', Validators.required]
+      }),
       phone: [''],
-      notification: '',
+      notification: 'email',
+      // rating: [null, [Validators.min(1), Validators.max(5)]],
+      rating: [null, ratingRange(1, 5) ],
       address: ['', Validators.required],
       address2: "",
       city: "",
