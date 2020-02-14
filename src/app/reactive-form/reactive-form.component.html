@@ -41,7 +41,8 @@
             <div class="col-md-6 mb-3">
               <label for="email">Email</label>
               <input type="email" class="form-control" formControlName="email" id="email"
-              [ngClass]="{ 'is-invalid' : (customerForm.get('emailGroup.email').touched || customerForm.get('emailGroup.email').dirty) && !customerForm.get('emailGroup.email').valid }">
+              [ngClass]="{ 'is-invalid' : ( customerForm.get('emailGroup').errors ||
+                (customerForm.get('emailGroup.email').touched || customerForm.get('emailGroup.email').dirty) && !customerForm.get('emailGroup.email').valid) }">
               <div class="invalid-feedback">
                 <span *ngIf="customerForm.get('emailGroup.email').errors?.valid">Please enter a valid email address.</span>
                 <span *ngIf="customerForm.get('emailGroup.email').errors?.required">An email address is required.</span>
@@ -51,9 +52,11 @@
             <div class="col-md-6 mb-3">
               <label for="confirmEmailId">Confirm Email</label>
               <input type="email" class="form-control" formControlName="confirmEmail" id="confirmEmailId"
-              [ngClass]="{ 'is-invalid' : (customerForm.get('emailGroup.confirmEmail').touched || customerForm.get('emailGroup.confirmEmail').dirty) && !customerForm.get('emailGroup.confirmEmail').valid }">
+              [ngClass]="{ 'is-invalid' : (customerForm.get('emailGroup').errors ||
+                (customerForm.get('emailGroup.confirmEmail').touched || customerForm.get('emailGroup.confirmEmail').dirty) && !customerForm.get('emailGroup.confirmEmail').valid) }">
               <div class="invalid-feedback">
-                <span *ngIf="customerForm.get('emailGroup.confirmEmail').errors?.required">Email does not match</span>
+                <span *ngIf="customerForm.get('emailGroup.confirmEmail').errors?.required">Confirmation email is required.</span>
+                <span *ngIf="customerForm.get('emailGroup').errors?.match">Email does not match</span>
               </div>
             </div>
           </div>

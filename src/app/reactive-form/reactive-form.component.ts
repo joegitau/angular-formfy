@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 import { ratingRange } from '../utils/rating-validator';
+import { emailMatcher } from '../utils/emailMatch-validator';
 
 @Component({
   selector: "app-reactive-form",
@@ -20,7 +21,7 @@ export class ReactiveFormComponent implements OnInit {
       emailGroup: this.fb.group({
         email: ['', [Validators.email, Validators.required]],
         confirmEmail: ['', Validators.required]
-      }),
+      }, {validator: emailMatcher}),
       phone: [''],
       notification: 'email',
       // rating: [null, [Validators.min(1), Validators.max(5)]],
