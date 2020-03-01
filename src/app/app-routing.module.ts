@@ -9,7 +9,12 @@ const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "users", component: UserListComponent },
   { path: "reactive-forms", component: ReactiveFormComponent },
-  { path: "template-forms", component: TemplateFormComponent }
+  { path: "template-forms", component: TemplateFormComponent },
+  {
+    path: "users/:id",
+    loadChildren: () =>
+      import("./user-list/user-routes/users.module").then(m => m.UsersModule)
+  }
 ];
 
 @NgModule({

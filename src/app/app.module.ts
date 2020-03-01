@@ -10,6 +10,7 @@ import { ReactiveFormComponent } from "./reactive-form/reactive-form.component";
 import { TemplateFormComponent } from "./template-form/template-form.component";
 import { NavComponent } from "./nav/nav.component";
 import { UserListComponent } from './user-list/user-list.component';
+import { UserDetailsComponent } from './user-list/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UserListComponent } from './user-list/user-list.component';
     ReactiveFormComponent,
     TemplateFormComponent,
     NavComponent,
-    UserListComponent
+    UserListComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
