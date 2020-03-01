@@ -1,7 +1,29 @@
-export interface Users {
+export interface IUsers {
   id: number;
-  first_name: string;
-  last_name: string;
+  name: string;
+  username?: string;
   email?: string;
-  avatar?: string;
+  address?: Address;
+  phone?: string;
+  website?: string;
+  company?: Comp;
+}
+
+interface Address {
+  street: string;
+  suite: string;
+  city: string;
+  zipcode: string;
+  geo: LatsLongs;
+}
+
+interface LatsLongs {
+  lat: string;
+  lng: string;
+}
+
+interface Comp {
+  name: string;
+  catchPhrase: string;
+  bs: string;
 }

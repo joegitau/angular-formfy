@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { catchError } from "rxjs/operators";
+import { catchError, tap, map } from "rxjs/operators";
 import { Observable, throwError } from "rxjs";
-import { Users } from "./users";
+import { IUsers } from "./users";
 
 @Injectable({
   providedIn: "root"
@@ -10,14 +10,12 @@ import { Users } from "./users";
 export class DataService {
   constructor(private http: HttpClient) {}
 
-  public url = "https://reqres.in/api/users";
+  private url = "https://jsonplaceholder.typicode.com/users";
 
-  // getUsers(): Observable<Users[]> {
-  //   return this.http.get<Users[]>(this.url).pipe(catchError(this.handleErrors));
-  // }
-
-  fetchUsers() {
-    return this.http.get(this.url);
+  getUsers(): Observable<IUsers[]> {
+    return this.http
+      .get<IUsers[]>(this.url)
+      .pipe(tap(data => console.log(data)));
   }
 
   handleErrors(error: HttpErrorResponse) {

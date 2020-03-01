@@ -1,6 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { DataService } from "../data.service";
-import { Users } from "../users";
 
 @Component({
   selector: "app-home",
@@ -8,13 +6,7 @@ import { Users } from "../users";
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
-  users: object;
-  constructor(private dataService: DataService) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.dataService.fetchUsers().subscribe(
-      results => (this.users = results),
-      error => console.error("Something ainr right!", error)
-    );
-  }
+  ngOnInit() {}
 }
